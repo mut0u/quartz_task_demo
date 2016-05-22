@@ -1,7 +1,10 @@
 (ns quartz-task-demo.task1
-  (:require [quartz-task.core :refer [defjob deftasks]]))
+  (:require
+   [clojure.java.shell :refer [sh]]
+   [quartz-task.core :refer [defjob deftasks]]))
 
 (defn job1-fn []
+  (sh "bash" "-c" "echo aaa >> ~/b.log")
   (prn "this is the job1 for task1 ...."))
 
 

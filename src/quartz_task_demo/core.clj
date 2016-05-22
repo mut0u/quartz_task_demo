@@ -10,7 +10,9 @@
 
 
 (defn start []
-  (let [s (-> (qs/initialize) qs/start)]
+  (let [s (-> (qs/initialize)
+              ;;(qs/initialize "quartz.properties")
+              qs/start)]
     (doseq [[job trigger] tasks]
       (try
         (qs/schedule s job trigger)
